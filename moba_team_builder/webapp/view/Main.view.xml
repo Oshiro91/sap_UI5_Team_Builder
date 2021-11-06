@@ -1,0 +1,63 @@
+<mvc:View
+    controllerName="mobateambuilder.controller.Main"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core" displayBlock="true"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:c="sap.suite.ui.commons"
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:layout="sap.ui.layout"
+		xmlns:t="sap.ui.table" class="sapUiSizeCompact"
+>
+
+		<App id="app">
+			<f:DynamicPage id="Dota-Team-Builder" headerExpanded="true" showFooter="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title id="title" text="{i18n>tit_dotateam}" />
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<f:content>
+						<Toolbar>
+							<ComboBox>
+								
+							</ComboBox>
+						</Toolbar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<!-- DynamicPage Content -->
+			<f:content>
+				<t:Table>
+					<t:extension>
+						<OverflowToolbar>
+							<ToolbarSpacer/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+						<t:Column >							
+							<t:template>
+							</t:template>
+						</t:Column>
+					</t:columns>
+					<t:rowActionTemplate>
+						<t:RowAction>
+							<t:items>
+							</t:items>
+						</t:RowAction>
+					</t:rowActionTemplate>
+				</t:Table>
+			</f:content>
+			<f:footer>
+				<OverflowToolbar>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+	</App>
+</mvc:View>
