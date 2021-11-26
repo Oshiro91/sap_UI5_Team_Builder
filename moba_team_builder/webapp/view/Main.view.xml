@@ -1,17 +1,15 @@
-<mvc:View
-    controllerName="mobateambuilder.controller.Main"
-		xmlns:mvc="sap.ui.core.mvc"
-		xmlns:core="sap.ui.core" displayBlock="true"
-		xmlns="sap.m"
-		xmlns:f="sap.f"
-		xmlns:c="sap.suite.ui.commons"
-		xmlns:fb="sap.ui.comp.filterbar"
-		xmlns:layout="sap.ui.layout"
-		xmlns:t="sap.ui.table" class="sapUiSizeCompact"
->
+<mvc:View controllerName="mobateambuilder.controller.Main"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:c="sap.suite.ui.commons"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:layout="sap.ui.layout"
+	xmlns:t="sap.ui.table" class="sapUiSizeCompact">
 
-		<App id="app">
-			<f:DynamicPage id="Dota-Team-Builder" headerExpanded="true" showFooter="true">
+	<App id="app">
+		<f:DynamicPage id="Dota-Team-Builder" headerExpanded="true" showFooter="true">
 			<!-- DynamicPage Title -->
 			<f:title>
 				<f:DynamicPageTitle>
@@ -25,8 +23,14 @@
 				<f:DynamicPageHeader pinnable="true">
 					<f:content>
 						<Toolbar>
-							<ComboBox>
-								
+							<ComboBox items="{path:'/mocklanes'}">
+								<items>
+									<core:Item
+											enabled="true"
+											key="{'/lane'}"
+											text="{'/lane'}"
+											textDirection="Inherit"/>
+								</items>
 							</ComboBox>
 						</Toolbar>
 					</f:content>
@@ -34,21 +38,40 @@
 			</f:header>
 			<!-- DynamicPage Content -->
 			<f:content>
-				<t:Table>
-					<t:extension>
+				<t:Table id="recipe_status_table" rows="{/EntradaSubCategoria}" rowActionCount="2" alternateRowColors="true" selectionMode="None" selectionBehavior="Row" visibleRowCountMode="Auto">
+				<t:title>
+					<Text text="{i18n>table_title}" class="table_title"/>
+				</t:title>
+				<t:extension>
 						<OverflowToolbar>
 							<ToolbarSpacer/>
 						</OverflowToolbar>
 					</t:extension>
 					<t:columns>
-						<t:Column >							
+						<t:Column id="column_player_name" autoResizable="true" filterProperty="playername" sortProperty="playername" hAlign="Begin">
+							<Label text="{i18n>column_player_name}"/>
 							<t:template>
+								<Text text="{playername}" class="table_item"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="column_player_character" autoResizable="true" filterProperty="playername" sortProperty="playername" hAlign="Begin">
+							<Label text="{i18n>column_player_hero}"/>
+							<t:template>
+								<Text text="{hero}" class="table_item"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="column_player_lane" autoResizable="true" filterProperty="playername" sortProperty="playername" hAlign="Begin">
+						<Label text="{i18n>column_player_lane}"/>
+							<t:template>
+								<Text text="{lane}" class="table_item"/>
 							</t:template>
 						</t:Column>
 					</t:columns>
 					<t:rowActionTemplate>
 						<t:RowAction>
 							<t:items>
+								<t:RowActionItem type="Custom" icon="sap-icon://edit" press="onEdit" class="sapUiSmallMarginEnd" />
+								<t:RowActionItem type="Delete" icon="sap-icon://delete" press="onDelete" />
 							</t:items>
 						</t:RowAction>
 					</t:rowActionTemplate>
@@ -56,6 +79,9 @@
 			</f:content>
 			<f:footer>
 				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button text="Novo Jogador" icon="sap-icon://add-contact" type="Emphasized"/>
+					<ToolbarSpacer width="1%"/>
 				</OverflowToolbar>
 			</f:footer>
 		</f:DynamicPage>

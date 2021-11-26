@@ -10,26 +10,27 @@ sap.ui.define(
 		'../model/formatter',
 		'sap/ui/core/Fragment',
 		"sap/m/MessageToast",
+		'../model/mock'
 	],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (BaseController, JSONModel, MessageBox, Filter, FilterOperator, Spreadsheet, formatter, Fragment, MessageToast) {
+	function (BaseController, JSONModel, MessageBox, Filter, FilterOperator, Spreadsheet, formatter, Fragment, MessageToast,mock) {
 		"use strict";
 
 		return BaseController.extend("mobateambuilder.controller.Main", {
 
 			formatter: formatter,
+			mock:mock,
 			onInit: function () {
 				if (!this.oModel) {
           this.oModel = new JSONModel()
           this.getView().setModel(this.oModel)
         };
 
-				let oData = [{ playername: 'Oshiro', favouritehero: 'Pudge', lane: 'TopLane' }];
-
-				this.oModel.setProperty('/EntradaSubCategoria', oData)
-
+				//Getting Lanes
+				this.oModel.setProperty('/mocklanes', mock.lanes_object());
+				console.log(this.oModel.getProperty('/mocklanes'))
 			}
 		});
 	});

@@ -1,1 +1,9 @@
 /* Enter your custom styles here */
+.table_title {
+  font-size: 2rem;
+  color: black;
+}
+.table_item{
+  font-size: 1rem;
+  color: darkred;
+}
